@@ -1,0 +1,39 @@
+# Here you can create custom commands.
+say-command:
+  command: "say"
+  description: "Make the bot say a message."
+  options:
+    msg:
+      name: "message"
+      description: "The message to say."
+      type: "STRING"
+      required: true
+  message:
+    content: "Woah, you said %option_message%"
+    buttons:
+      1:
+        id: "https://olziedev.com/"
+        name: "Developers site"
+        type: "LINK"
+        disabled: false
+    embed:
+      title: "Embed title"
+      description: "Embed description"
+      color: "#fcba03"
+      fields:
+        1:
+          name: "Field 1"
+          value: "Field 1 value"
+          inline: true
+        2:
+          name: "Field 2"
+          value: "Field 2 value"
+          inline: true
+      thumbnail: "https://cdn.discordapp.com/icons/568501722066976790/570b3f63695c2e6e1c56e4313f68e17a.webp?size=80"
+      footer:
+        text: "Footer text"
+        icon_url: "https://cdn.discordapp.com/icons/568501722066976790/570b3f63695c2e6e1c56e4313f68e17a.webp?size=80"
+      author:
+        name: "Author name"
+        url: "https://olziedev.com/"
+        icon_url: "https://cdn.discordapp.com/icons/568501722066976790/570b3f63695c2e6e1c56e4313f68e17a.webp?size=80"

@@ -1,0 +1,239 @@
+# If the roles key is not present, the command will be available to everyone.
+
+kick-command:
+  command: "kick"
+  description: "Kick a user from the server."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "user"
+      description: "The user to kick."
+      type: "USER"
+      required: true
+    reason:
+      name: "reason"
+      description: "The reason for kicking the user."
+      type: "STRING"
+      required: false
+warn-command:
+  command: "warn"
+  description: "Warn a user."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "user"
+      description: "The user to warn."
+      type: "USER"
+      required: true
+    reason:
+      name: "reason"
+      description: "The reason for warning the user."
+      type: "STRING"
+      required: false
+ban-command:
+  command: "ban"
+  description: "Ban a user."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "user"
+      description: "The user to ban."
+      type: "USER"
+      required: true
+    time:
+      name: "time"
+      description: "The time for this ban (1d for example)"
+      type: "STRING"
+      required: false
+    reason:
+      name: "reason"
+      description: "The reason for warning the user."
+      type: "STRING"
+      required: false
+unban-command:
+  command: "unban"
+  description: "Unban a user."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "userid"
+      description: "The user to unban."
+      type: "NUMBER"
+      required: true
+timeout-command:
+  command: "mute"
+  description: "mute a user."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "user"
+      description: "The user to timeout."
+      type: "USER"
+      required: true
+    time:
+      name: "time"
+      description: "The time for this mute (1d for example)"
+      type: "STRING"
+      required: false
+    reason:
+      name: "reason"
+      description: "The reason for warning the user."
+      type: "STRING"
+      required: false
+unmute-command:
+  command: "unmute"
+  description: "Unmute a user."
+  roles:
+    - "0"
+  options:
+    user:
+      name: "user"
+      description: "The user to unmute."
+      type: "USER"
+      required: true
+close-command:
+  command: "close"
+  description: "Close a ticket."
+forceclose-command:
+  command: "forceclose"
+  description: "Force-close a ticket."
+add-command:
+  command: "add"
+  description: "Add a user to a ticket."
+  roles:
+    - "0"
+  options:
+    command:
+      name: "user"
+      description: "The user to be added."
+      type: "USER"
+      required: true
+help-command:
+  command: "help"
+  description: "Get help on a command."
+  options:
+    command:
+      name: "command"
+      description: "The command to get help on."
+      type: "STRING"
+      required: false
+stealemoji-command:
+  command: "stealemoji"
+  description: "Steal an emote from a server."
+  cooldown: 3600
+  roles:
+    - "0"
+  options:
+    user:
+      name: "emoji"
+      description: "The emoji to steal."
+      type: "STRING"
+      required: true
+    name:
+      name: "name"
+      description: "The name of the emoji."
+      type: "STRING"
+      required: true
+suggestion-command:
+  command: "suggest"
+  description: "Make a suggestion."
+  options:
+    suggestion:
+      name: "suggestion"
+      description: "The suggestion."
+      type: "STRING"
+      required: true
+note-command:
+  command: "note"
+  description: "Make a suggestion note."
+  roles:
+    - "0"
+  options:
+    suggestion-id:
+      name: "suggest-id"
+      description: "The suggestion id."
+      type: "INTEGER"
+      required: true
+    note:
+      name: "note"
+      description: "The note."
+      type: "STRING"
+      required: true
+approve-command:
+  command: "approve"
+  description: "Approve a suggestion."
+  roles:
+    - "0"
+  options:
+    suggestion-id:
+      name: "suggest-id"
+      description: "The suggestion id."
+      type: "INTEGER"
+      required: true
+    reason:
+      name: "reason"
+      description: "The reason for approval."
+      type: "STRING"
+      required: true
+deny-command:
+  command: "deny"
+  description: "Deny a suggestion."
+  roles:
+    - "0"
+  options:
+    suggestion-id:
+      name: "suggest-id"
+      description: "The suggestion id."
+      type: "INTEGER"
+      required: true
+    reason:
+      name: "reason"
+      description: "The reason for denial."
+      type: "STRING"
+      required: true
+consider-command:
+  command: "consider"
+  description: "Consider a suggestion."
+  roles:
+    - "0"
+  options:
+    suggestion-id:
+      name: "suggest-id"
+      description: "The suggestion id."
+      type: "INTEGER"
+      required: true
+purge-command:
+  command: "purge"
+  description: "Purge messages."
+  roles:
+    - "0"
+  options:
+    amount:
+      name: "amount"
+      description: "The amount to purge."
+      type: "INTEGER"
+      required: true
+viewsuggestions-command:
+  command: "viewsuggestions"
+  description: "View who's suggested."
+  roles:
+    - "0"
+  options:
+    suggestion-id:
+      name: "suggest-id"
+      description: "The suggestion id."
+      type: "INTEGER"
+      required: true
+    status:
+        name: "status"
+        description: "The status of the suggestion."
+        type: "STRING"
+        required: true
+        choices:
+          Agree: "AGREE"
+          Disagree: "DISAGREE"

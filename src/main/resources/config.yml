@@ -1,0 +1,320 @@
+# Remember, when inviting the bot to your server. Make sure you have the applications command scope.
+# If you need help inviting the bot to your server, we can help you in the ticket.
+settings:
+  # You will need to put your discord token here, you can grab this from the discord developer portal.
+  bot-token: ""
+  # You will need to put your server ID here.
+  guild-id: ""
+
+  # Control your bot presence.
+  presence:
+    # All the statuses are listed here: https://javadocs.olziedev.com/jda/net/dv8tion/jda/api/OnlineStatus.html
+    status: DO_NOT_DISTURB
+    # The time on how often the activities will cycle.
+    activity-time: 60
+    # The activities the bot will be doing.
+    activities:
+      1:
+        name: "Type /help for help"
+        # All the types of activities are listed here: https://javadocs.olziedev.com/jda/net/dv8tion/jda/api/entities/Activity.ActivityType.html
+        type: DEFAULT
+        url: "" # This is only used if you're using a streaming activity.
+      2:
+        name: "%members% members."
+        type: WATCHING
+        url: ""
+
+  # Control the role reactions.
+  reactions:
+    1:
+      # If the message doesn't exist. The bot will create it and then add the dropdown to it.
+      # SELECT THE CHANNEL ID!
+      channel-id: -1
+      message:
+        embed:
+          title: "Choose reaction"
+          description: "Choose reactions\nGiveaway role"
+          color: "#fcba03"
+      dropdown-placeholder: "Select roles"
+      reply-message: "Roles modified!"
+      roles:
+        1:
+          role-id: "0"
+          emoji: "🦑"
+          label: "Giveaway role"
+          description: "This is a giveaway role."
+
+  # Control ticket creator.
+  ticket:
+    # If the message doesn't exist. The bot will create it and then add the dropdown to it.
+    # SELECT THE CHANNEL ID!
+    channel-id: -1
+    transcript-channel-id: -1
+    send-transcript-to-added-users: true
+    url: "https://transcripts.thespotsmp.com"
+    local-html: "public/"
+
+    message:
+      embed:
+        title: "Create a ticket"
+        description: "Create a ticket here!"
+        color: "#fcba03"
+    question:
+      embed:
+        description: "%question%"
+        color: "#fcba03"
+    dropdown-placeholder: "Create a ticket"
+    reply-message: "Created ticket! Check %channel% for the ticket."
+    permissions:
+    - "VIEW_CHANNEL"
+    - "MESSAGE_HISTORY"
+    - "MESSAGE_READ"
+    - "MESSAGE_WRITE"
+    categories:
+      1:
+        channel-name: "%"
+        pinged-roles:
+          - -1 # These are the roles that will be pinged upon ticket creation.
+        view-roles:
+          - -1 # These are the roles that can see the ticket.
+        emoji: "🦑"
+        label: "Suggestions"
+        description: "Create a ticket for suggestions"
+        questions:
+          - "What is your in game username?"
+          - "What do you want to suggest?"
+        category-id: -1 # This is the category discord category id channels will be created in. Please fill this in.
+        ticket-created-message:
+          embed:
+            title: "Ticket created - %category%"
+            description: "Hello %member%, thanks for creating a ticket. Please answer the questions below and we will get back to you as soon as possible."
+            timestamp: true
+            color: "#fcba03"
+        ticket-answers-message:
+          content: "%ping%"
+          embed:
+            title: "Ticket answers - %category%"
+            description: "Hello %member%, thanks for answering the questions. Please wait for a staff member to respond.\n%questions_answers%"
+            timestamp: true
+            color: "#fcba03"
+        ticket-answers-entry: "**%question%**\n%answer%\n"
+        ticket-confirmation-cancel-message:
+          embed:
+            title: "Ticket close cancelled"
+            description: "Ticket closure has been cancelled by %member%!"
+            timestamp: true
+            color: "#fcba03"
+        ticket-confirmation-message:
+          embed:
+            title: "Ticket close confirmation"
+            description: "Hello %member%, thank you for creating a ticket. Are you sure you want to close this ticket?"
+            timestamp: true
+            color: "#fcba03"
+          buttons:
+            1:
+              id: "ticket_confirm_yes"
+              name: "Yes, close"
+              type: "DANGER"
+              disabled: false
+            2:
+              id: "ticket_confirm_no"
+              name: "No, don't close"
+              type: "SUCCESS"
+              disabled: false
+
+  # Control logging
+  logging:
+    channel-id: -1 # This is the channel id where the logs will be sent.
+    blacklisted-channels:
+      - "-1"
+    message:
+      embed:
+        title: "Action Logged"
+        timestamp: true
+        fields:
+          1:
+            name: "Action info"
+            value: "%action%"
+            inline: false
+        footer:
+          text: "Action was caused by %user%"
+
+  # Control the auto moderation
+  auto-moderation:
+    blacklisted-links:
+      punishment:
+        type: WARN
+        reason: "You cannot post that link."
+      list:
+      - "youtube.com"
+      - "google.com"
+    custom-regex:
+      1:
+        regex: "n[i!j1e]+gg(rs?|ett?e?s?|lets?|ress?e?s?|r[a0oe]s?|[ie@ao0!]rs?)"
+        punishment:
+          type: MUTE
+          time: "1d"
+          reason: "You cannot send racial slurs."
+      2:
+        regex: "n[i!j1e]+gg(as?|ett?e?s?|lts?|ss?s?|as?|[i@ao0!]s?)"
+        punishment:
+          type: MUTE
+          time: "1d"
+          reason: "You cannot send racial slurs."
+  # Control the punishments
+  punishment:
+    # Please enter the mute role ID here.
+    mute-role-id: ""
+    warning:
+      default-time: 2419200 # The default warning time in seconds, this is how long a warning will expire.
+      warnings: # NEVER EVER, PLEASE. DO NOT SET THE TYPE TO WARNING BELOW OTHERWISE IT'LL LOOP!!!!
+        4: # Person needs to get 4 warnings.
+          type: MUTE
+          time: "1d"
+          reason: "reaching 4 warnings"
+        5: # Person needs to get 5 warnings.
+          type: MUTE
+          time: "2d"
+          reason: "reaching 5 warnings"
+        6: # Person needs to get 6 warnings.
+          type: MUTE
+          time: "3d"
+          reason: "reaching 6 warnings"
+        7: # Person needs to get 7 warnings.
+          type: MUTE
+          time: "4d"
+          reason: "reaching 7 warnings"
+
+  # Control greetings:
+  greeting:
+    welcome:
+      channel-id: -1
+      given-roles:
+        - -1 # This is the role id that will be given to the user.
+      message:
+        embed:
+          title: "Welcome to %guild%"
+          description: "Welcome %member% to %guild%!\nPlease read the rules in #rules."
+          color: "#fcba03"
+    leave:
+      channel-id: -1
+      message:
+        embed:
+          title: "Goodbye from %guild%!"
+          description: "Goodbye %member%!"
+          color: "#fcba03"
+
+  # Control Member count
+  member-count:
+    channel-id: -1 # make sure this is a voice channel.
+    channel-name: "There are %members% members."
+
+  suggestion:
+    channel-id: -1
+    accepted-channel-id: -1
+    denied-channel-id: -1
+
+    agree-reaction: "✅"
+    disagree-reaction: "❌"
+
+    suggestion-message:
+      buttons:
+        agree:
+          id: "suggestion_agree"
+          name: "Agree"
+          type: "SUCCESS"
+          disabled: false
+        disagree:
+          id: "suggestion_disagree"
+          name: "Disagree"
+          type: "DANGER"
+          disabled: false
+      embed:
+        fields:
+          1:
+            name: "Submitter"
+            value: "%member%\n\u200E"
+            inline: false
+          2:
+            name: "Suggestion"
+            value: "%suggestion%"
+            inline: false
+        timestamp: true
+        color: "#fcba03"
+        footer:
+          text: "User ID: %member_id% | Suggestion ID: #%suggestion_id%"
+    suggestion-message-considered:
+      embed:
+        fields:
+          1:
+            name: "Submitter"
+            value: "%member%\n\u200E"
+            inline: false
+          2:
+            name: "Status"
+            value: "This suggestion is currently being considered.\n\u200E"
+            inline: false
+          3:
+            name: "Suggestion"
+            value: "%suggestion%"
+            inline: false
+        timestamp: true
+        color: "#fcba03"
+        footer:
+          text: "User ID: %member_id% | Suggestion ID: #%suggestion_id%"
+    suggestion-message-denied:
+      embed:
+        title: "Suggestion denied"
+        fields:
+          1:
+            name: "Results"
+            value: "%results%\u200E"
+            inline: false
+          2:
+            name: "Suggestion"
+            value: "%suggestion%\n\u200E"
+            inline: false
+          3:
+            name: "Submitter"
+            value: "%member%\n\u200E"
+            inline: false
+          4:
+            name: "Rejected by"
+            value: "%rejected_member%\n\u200E"
+            inline: false
+          5:
+            name: "Response"
+            value: "%response%"
+            inline: false
+        timestamp: true
+        color: "#fcba03"
+        footer:
+          text: "User ID: %member_id% | Suggestion ID: #%suggestion_id%"
+    suggestion-message-accepted:
+      embed:
+        title: "Suggestion accepted"
+        fields:
+          1:
+            name: "Results"
+            value: "%results%\u200E"
+            inline: false
+          2:
+            name: "Suggestion"
+            value: "%suggestion%\n\u200E"
+            inline: false
+          3:
+            name: "Submitter"
+            value: "%member%\n\u200E"
+            inline: false
+          4:
+            name: "Accepted by"
+            value: "%accepted_member%\n\u200E"
+            inline: false
+          5:
+            name: "Response"
+            value: "%response%"
+            inline: false
+        timestamp: true
+        color: "#fcba03"
+        footer:
+          text: "User ID: %member_id% | Suggestion ID: #%suggestion_id%"

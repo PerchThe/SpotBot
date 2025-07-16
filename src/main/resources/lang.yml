@@ -1,0 +1,128 @@
+lang:
+  no-members-found:
+    content: "No members found!"
+  emote-wait:
+    content: "Please wait while we process your request."
+  no-permission:
+    content: "You don't have permission to do that!"
+  not-in-ticket:
+    content: "You are not in a ticket!"
+  punishment-higher-me:
+    content: "Couldn't %punishment% the user, they're higher than me in the hierarchy!"
+  punishment-self:
+    content: "You cannot %punishment% this user!"
+  punishment-higher-you:
+    content: "Couldn't %punishment% the user, they're higher than you in the hierarchy!"
+  punishment-created-bot:
+    content: "%member% you've been %punishment% for the reason %reason%"
+  punishment-created-bot-time:
+    content: "%member% you've been %punishment% for the reason %reason%\nThis will expire in %time%"
+  punishment-created:
+    content: "Successfully %punishment% the user %member%"
+  punishment-created-reason:
+    content: "Successfully %punishment% the user %member% for the reason %reason%"
+  punishment-created-time-reason:
+    content: "Successfully %punishment% the user %member% for the reason %reason%\nThis will expire in %time%"
+  punishment-created-time:
+    content: "Successfully %punishment% the user %member%\nThis will expire in %time%"
+  suggestion-created:
+    content: "Your suggestion has been created!"
+    ephemeral: true
+    buttons:
+      1:
+        id: "%link%"
+        name: "Suggestion"
+        type: "LINK"
+        disabled: false
+  suggestion-id-not-found:
+    content: "Suggestion ID not found!"
+  suggestion-considering:
+    content: "Successfully marked this suggestion has being considered!"
+    buttons:
+      1:
+        id: "%link%"
+        name: "Suggestion"
+        type: "LINK"
+        disabled: false
+  suggestion-accepted:
+    content: "Successfully accepted this suggestion!"
+    buttons:
+      1:
+        id: "%link%"
+        name: "Suggestion"
+        type: "LINK"
+        disabled: false
+  suggestion-rejected:
+    content: "Successfully rejected the suggestion!"
+    buttons:
+      1:
+        id: "%link%"
+        name: "Suggestion"
+        type: "LINK"
+        disabled: false
+  suggestion-note:
+    content: "Successfully added your note to the suggestion!"
+    buttons:
+      1:
+        id: "%link%"
+        name: "Suggestion"
+        type: "LINK"
+        disabled: false
+  member-not-found:
+    content: "Member not found!"
+  unbanned-member:
+    content: "Successfully unbanned that member!"
+  cannot-unban-member:
+    content: "That member isn't banned!"
+  unmuted-member:
+    content: "Successfully unmuted that member!"
+  cannot-unmute-member:
+    content: "That member isn't muted!"
+  not-valid-emote:
+    content: "That's not a valid emote!"
+  emote-cooldown:
+    content: "You cannot upload another emote for another %time%!"
+  emote-upload-failed:
+    content: "Failed to upload the emote, please try again! (Reached max amount of emotes in server?)"
+  emote-upload:
+    content: "Successfully uploaded the emote named %name% as %emote%!"
+  help-menu:
+    embed:
+      title: "Help Menu"
+      description: "Here's a list of commands you can use!"
+      color: "#00FF00"
+      timestamp: true
+  member-already-added:
+    content: "That member is already added to the ticket!"
+  member-added:
+    content: "Successfully added that %member% to the ticket!"#
+  purge-invalid-amount:
+    content: "You can only purge between 1-100 messages!"
+  purged-amount:
+    content: "Successfully purged %amount% messages!"
+  purge-no-messages:
+    content: "No messages to purge, either messages are older than 2 weeks or there isn't enough messages to purge!"
+  transcript-user-sent:
+    content: "Closed by: %closed%\nCreator: %creator%\nCategory: %category%\nDate closed: %date%\nTranscript: %url%"
+  transcript-user-sent-owner:
+    content: "Closed by: %closed%\nCreator: %creator%\nCategory: %category%\nDate closed: %date%\nTranscript: %url%"
+  transcript-sent:
+    content: "Closed by: %closed%\nCreator: %creator%\nCategory: %category%\nDate closed: %date%\nTranscript: %url%"
+  ticket-open: "You already have a ticket open! %channel%"
+  suggestion-members:
+    embed:
+      title: "Suggestion (%page%/%pages%)"
+      description: "Here is a list of %status% suggestions!\n%members%"
+      color: "#00FF00"
+      timestamp: true
+    buttons:
+      1:
+        id: "suggestion_previous"
+        name: "Previous"
+        type: "DANGER"
+        disabled: false
+      2:
+        id: "suggestion_next"
+        name: "Next"
+        type: "SUCCESS"
+        disabled: false
