@@ -2,6 +2,8 @@ package com.olziedev.spotbot.server.ticket;
 
 import net.dv8tion.jda.api.entities.ISnowflake;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.User;
+import com.olziedev.olziecommand.framework.api.FrameworkCommand;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,6 +66,10 @@ public class TicketCategory {
 
     public String getName() {
         return this.name;
+    }
+
+    public boolean noPermission(com.olziedev.olziecommand.framework.api.FrameworkCommand cmd, Member member, net.dv8tion.jda.api.entities.User user) {
+        return this.viewIDs.stream().noneMatch(x -> member.getRoles().stream().map(ISnowflake::getIdLong).anyMatch(x2 -> x2.equals(x)));
     }
 
     public boolean noPermission(Member member) {

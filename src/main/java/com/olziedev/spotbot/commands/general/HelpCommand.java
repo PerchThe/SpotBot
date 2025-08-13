@@ -38,7 +38,7 @@ public class HelpCommand extends SlashCommand {
         if (spotMessage.hasEmbed()) {
             OptionMapping command = cmd.getOption("command");
             for (FrameworkCommand cmds : olzieCommand.getCommands()) {
-                if (olzieCommand.noPermission(cmds, cmd.getMember())) continue;
+                if (olzieCommand.noPermission(cmds, cmd.getMember(), cmd.getMember().getUser())) continue;
                 if (command != null && (!cmds.getName().startsWith(command.getAsString()) && !cmds.getName().contains(command.getAsString())))
                     continue;
 

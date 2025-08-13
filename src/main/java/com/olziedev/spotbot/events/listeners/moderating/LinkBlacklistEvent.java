@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 public class LinkBlacklistEvent extends SpotEvent {
 
-    private final Pattern URL_PATTERN = Pattern.compile("((http|ftp|https):\\/\\/)(([\\w.-]*)\\.([\\w]*))",Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+    private final Pattern URL_PATTERN = Pattern.compile("((http|ftp|https):\\/\\/)(([\\w.-]*)\\.([\\w]*))", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
     private final List<String> blacklisted = Configuration.getConfig().getStringList("settings.auto-moderation.blacklisted-links.list");
     private final PunishmentCreator punishmentCreator = new PunishmentCreator(Configuration.getConfig().getSection("settings.auto-moderation.blacklisted-links.punishment"));
 
@@ -43,7 +43,7 @@ public class LinkBlacklistEvent extends SpotEvent {
             String url = matches.group().replace("https://www.", "").replace("http://www.", "").replace("http//", "").replace("https://", "");
             if (!blacklisted.contains(url)) continue;
 
-            this.punishmentCreator.create(member.getIdLong(), new SlashExecutor(null, channel, null, channel.getGuild(), null, null, null, null), false, x -> message.delete().queue());
+            this.punishmentCreator.create(member.getIdLong(), null, false, x -> message.delete().queue());
             return;
         }
     }

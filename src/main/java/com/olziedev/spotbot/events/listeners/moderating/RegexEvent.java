@@ -44,12 +44,16 @@ public class RegexEvent extends SpotEvent {
     }
 
     private void event(Member member, Message message, TextChannel channel) {
+        this.event(member, message, channel, null);
+    }
+
+    private void event(Member member, Message message, TextChannel channel, SlashExecutor cmd) {
         String content = message.getContentRaw();
         for (Map.Entry<Pattern, PunishmentCreator> pattern : regex.entrySet()) {
             Matcher matches = pattern.getKey().matcher(content);
             if (!matches.find()) continue;
 
-            pattern.getValue().create(member.getIdLong(), new SlashExecutor(null, channel, null, channel.getGuild(), null, null, null, null), false, x -> message.delete().queue());
+            pattern.getValue().create(member.getIdLong(), cmd, false, x -> message.delete().queue());
             return;
         }
     }
