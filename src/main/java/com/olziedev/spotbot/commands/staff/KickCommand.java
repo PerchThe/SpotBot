@@ -45,24 +45,7 @@ public class KickCommand extends SlashCommand {
         }
         new PunishmentCreator(PunishmentType.KICK, null, cmd.getOption("reason") == null ? null : cmd.getOption("reason").getAsString())
                 .create(member.getIdLong(), cmd, false, kick -> {
-                    new ActionLog(member, cmd.getMember(), "●     @Override\n" +
-                            "    public void onExecute(SlashExecutor cmd) {\n" +
-                            "        Member member = cmd.getOption(\"user\").getAsMember();\n" +
-                            "        if (member == null) {\n" +
-                            "            new SpotMessage(Configuration.getLang().getSection(\"lang.member-not-found\"), cmd).sendMessage().queue();\n" +
-                            "            return;\n" +
-                            "        }\n" +
-                            "        new PunishmentCreator(PunishmentType.KICK, null, cmd.getOption(\"reason\") == null ? null : cmd.getOption(\"reason\").getAsString())\n" +
-                            "                .create(member.getIdLong(), cmd, false, kick -> {\n" +
-                            "                    new ActionLog(member, cmd.getMember(), \"● Action: **Member Kicked**\\n● Reason: **\" + (kick.getReason() == null ? \"N/A\" : kick.getReason()) + \"**\", Color.ORANGE);\n" +
-                            "                    SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection(\"lang.punishment-created\" + (kick.getReason() == null ? \"\" : \"-reason\")), cmd);\n" +
-                            "                    spotMessage.replaceOptions(\"%member%\", member.getAsMention());\n" +
-                            "                    spotMessage.replaceOptions(\"%punishment%\", kick.getPunishmentType().getOtherName().toLowerCase());\n" +
-                            "                    spotMessage.replaceOptions(\"%reason%\", kick.getReason() == null ? \"N/A\" : kick.getReason());\n" +
-                            "                    spotMessage.sendMessage().queue();\n" +
-                            "                });\n" +
-                            "    }\n" +
-                            "}: **Member Kicked**\n● Reason: **" + (kick.getReason() == null ? "N/A" : kick.getReason()) + "**", Color.ORANGE);
+                    new ActionLog(member, cmd.getMember(), "● Action: **Member Kicked**\n● Reason: **" + (kick.getReason() == null ? "N/A" : kick.getReason()) + "**", Color.ORANGE);
                     SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection("lang.punishment-created" + (kick.getReason() == null ? "" : "-reason")), cmd);
                     spotMessage.replaceOptions("%member%", member.getAsMention());
                     spotMessage.replaceOptions("%punishment%", kick.getPunishmentType().getOtherName().toLowerCase());
