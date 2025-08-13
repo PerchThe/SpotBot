@@ -94,35 +94,48 @@ public class Ticket {
                     if (member.getIdLong() == manager.jda.getSelfUser().getIdLong()) continue;
 
                     if (member.getIdLong() == this.userID) {
-                        try {
-                            PrivateChannel dm = member.getUser().openPrivateChannel().complete();
-                            SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection("lang.transcript-user-sent-owner"), null);
-                            spotMessage.replaceOptions("%closed%", closed.getUser().getAsTag());
-                            spotMessage.replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
-                            spotMessage.replaceOptions("%category%", this.getCategory().getLabel());
-                            spotMessage.replaceOptions("%date%", "<t:" + date + ">");
-                            spotMessage.replaceOptions("%url%", url);
-                            if (spotMessage.hasEmbed()) {
-                                spotMessage.getSpotEmbed().replaceOptions("%closed%", closed.getUser().getAsTag());
-                                spotMessage.getSpotEmbed().replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
-                                spotMessage.getSpotEmbed().replaceOptions("%category%", this.getCategory().getLabel());
-                                spotMessage.getSpotEmbed().replaceOptions("%date%", "<t:" + date + ">");
-                                spotMessage.replaceOptions("%url%", url);
+                            String creator;
+                            try {
+                                creator = this.manager.jda.getUserById(this.userID).getAsTag();
+                            } catch (final Exception ex) {
+                                creator = "Null (Member Left)?";
                             }
-                            spotMessage.sendMessage(dm).complete();
-                        } catch (Throwable ignored) {}
-                        continue;
+                            try {
+                                PrivateChannel dm = member.getUser().openPrivateChannel().complete();
+                                SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection("lang.transcript-user-sent-owner"), null);
+                                spotMessage.replaceOptions("%closed%", creator);
+                                spotMessage.replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
+                                spotMessage.replaceOptions("%category%", this.getCategory().getLabel());
+                                spotMessage.replaceOptions("%date%", "<t:" + date + ">");
+                                spotMessage.replaceOptions("%url%", url);
+                                if (spotMessage.hasEmbed()) {
+                                    spotMessage.getSpotEmbed().replaceOptions("%closed%", creator);
+                                    spotMessage.getSpotEmbed().replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
+                                    spotMessage.getSpotEmbed().replaceOptions("%category%", this.getCategory().getLabel());
+                                    spotMessage.getSpotEmbed().replaceOptions("%date%", "<t:" + date + ">");
+                                    spotMessage.replaceOptions("%url%", url);
+                                }
+                                spotMessage.sendMessage(dm).complete();
+                            } catch (Throwable ignored) {
+                            }
+                            continue;
+                    }
+                    String creator;
+                    try {
+                        creator = this.manager.jda.getUserById(this.userID).getAsTag();
+                    } catch (final Exception ex) {
+                        creator = "Null (Member Left)?";
                     }
                     try {
                         PrivateChannel dm = member.getUser().openPrivateChannel().complete();
                         SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection("lang.transcript-user-sent"), null);
-                        spotMessage.replaceOptions("%closed%", closed.getUser().getAsTag());
+                        spotMessage.replaceOptions("%closed%", creator);
                         spotMessage.replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
                         spotMessage.replaceOptions("%category%", this.getCategory().getLabel());
                         spotMessage.replaceOptions("%date%", "<t:" + date + ">");
                         spotMessage.replaceOptions("%url%", url);
                         if (spotMessage.hasEmbed()) {
-                            spotMessage.getSpotEmbed().replaceOptions("%closed%", closed.getUser().getAsTag());
+                            spotMessage.getSpotEmbed().replaceOptions("%closed%", creator);
                             spotMessage.getSpotEmbed().replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
                             spotMessage.getSpotEmbed().replaceOptions("%category%", this.getCategory().getLabel());
                             spotMessage.getSpotEmbed().replaceOptions("%date%", "<t:" + date + ">");
@@ -132,16 +145,22 @@ public class Ticket {
                     } catch (Throwable ignored) {}
                 }
             }
+            String creator;
+            try {
+                creator = this.manager.jda.getUserById(this.userID).getAsTag();
+            } catch (final Exception ex) {
+                creator = "Null (Member Left)?";
+            }
             try {
                 TextChannel textChannel = manager.getJDA().getTextChannelById(Configuration.getConfig().getLong("settings.ticket.transcript-channel-id"));
                 SpotMessage spotMessage = new SpotMessage(Configuration.getLang().getSection("lang.transcript-sent"), null);
-                spotMessage.replaceOptions("%closed%", closed.getUser().getAsTag());
+                spotMessage.replaceOptions("%closed%", creator);
                 spotMessage.replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
                 spotMessage.replaceOptions("%category%", this.getCategory().getLabel());
                 spotMessage.replaceOptions("%date%", "<t:" + date + ">");
                 spotMessage.replaceOptions("%url%", url);
                 if (spotMessage.hasEmbed()) {
-                    spotMessage.getSpotEmbed().replaceOptions("%closed%", closed.getUser().getAsTag());
+                    spotMessage.getSpotEmbed().replaceOptions("%closed%", creator);
                     spotMessage.getSpotEmbed().replaceOptions("%creator%", manager.jda.getUserById(this.userID).getAsTag());
                     spotMessage.getSpotEmbed().replaceOptions("%category%", this.getCategory().getLabel());
                     spotMessage.getSpotEmbed().replaceOptions("%date%", "<t:" + date + ">");
