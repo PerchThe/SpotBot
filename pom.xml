@@ -4,7 +4,7 @@
     <groupId>com.olziedev</groupId>
     <artifactId>spotbot</artifactId>
     <version>1.0.2</version>
-    <name>Spot Bot</name>
+    <name>Bot</name>
 
     <dependencies>
         <dependency>
