@@ -6,7 +6,6 @@ import com.olziedev.spotbot.message.SpotMessage;
 import com.olziedev.spotbot.utils.Configuration;
 import net.dv8tion.jda.api.entities.*;
 
-import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
