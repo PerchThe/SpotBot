@@ -68,8 +68,7 @@ public class TicketCreator {
             Ticket ticket = manager.getTickets(member.getIdLong()).stream().filter(x -> x.getCategory().equals(category)).findFirst().orElse(null);
             event.getMessage().editMessage(event.getMessage()).setActionRows(ActionRow.of(event.getSelectionMenu())).queue();
             if (ticket != null) {
-                event.reply(Configuration.getLang().getString("lang.ticket-open").replace("%channel%", ticket.getTextChannel().getAsMention())).queue();
-//                return Configuration.getLang().getString("lang.ticket-open").replace("%channel%", ticket.getTextChannel().getAsMention());
+                return section.getString("ticket-exists").replace("%channel%", ticket.getTextChannel().getAsMention());
             }
 
             ChannelAction<TextChannel> channelCreate = jda.getCategoryById(category.getCategoryID())
